@@ -34,12 +34,19 @@ public:
 class Thermostat {
 private:
     double currentTemperature;
-
+    HeatingSystem heating; 
 public:
     Thermostat(double temperature) : currentTemperature(temperature) {}
 
     double getCurrentTemperature() const {
         return currentTemperature;
+    }
+
+    void switchOn() {
+        heating.turnOn();
+    }
+    void switchOff() {
+        heating.turnOn();
     }
 };
 #include <iostream>
@@ -140,13 +147,13 @@ int main() {
     //////////////////////////////////////////////////////////////////
 
     Thermostat thermostat(18.5);
-    HeatingSystem heating;
+    
 
     if (thermostat.getCurrentTemperature() < 20.0) {
-        heating.turnOn();
+        thermostat.switchOn();
     }
     else {
-        heating.turnOff();
+        thermostat.switchOff();
     }
     
     //////////////////////////////////////////////////////////////////
