@@ -17,6 +17,7 @@ public:
 
     void withdraw(double amount) {
         balance -= amount;
+        std::cout << "Withdrawal successful. New balance: $" << balance << std::endl;
     }
 };
 class HeatingSystem {
@@ -129,7 +130,7 @@ int main() {
     // Violation of Tell, Don't Ask
     if (account.getBalance() > 500) {
         account.withdraw(500);
-        std::cout << "Withdrawal successful. New balance: $" << account.getBalance() << std::endl;
+        
     }
     else {
         std::cout << "Insufficient funds for withdrawal." << std::endl;
