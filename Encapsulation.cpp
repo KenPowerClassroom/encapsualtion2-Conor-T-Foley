@@ -35,6 +35,7 @@ class Thermostat {
 private:
     double currentTemperature;
     HeatingSystem heating; 
+    const int minimumTemperature = 20;
 public:
     Thermostat(double temperature) : currentTemperature(temperature) {}
 
@@ -47,6 +48,15 @@ public:
     }
     void switchOff() {
         heating.turnOn();
+    }
+
+    void regulateTemp() {
+        if (getCurrentTemperature() < minimumTemperature) {
+            switchOn();
+        }
+        else {
+            switchOff();
+        }
     }
 };
 #include <iostream>
@@ -164,13 +174,8 @@ int main() {
 
     Thermostat thermostat(18.5);
     
-
-    if (thermostat.getCurrentTemperature() < 20.0) {
-        thermostat.switchOn();
-    }
-    else {
-        thermostat.switchOff();
-    }
+    thermostat.regulateTemp();
+    
     
     //////////////////////////////////////////////////////////////////
     // Exercise 3
