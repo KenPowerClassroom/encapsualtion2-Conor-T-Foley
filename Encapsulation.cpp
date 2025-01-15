@@ -146,11 +146,22 @@ public:
     void useAmmo() {
         ammo--;
     }
+
+    void processAttack() {
+        if (getHealth() > 0 && getAmmo() > 0) {
+            takeDamage(10);
+            useAmmo();
+            std::cout << "Player attacked and used ammo." << std::endl;
+        }
+        else {
+            std::cout << "Player can't respond to attack." << std::endl;
+        }
+    }
 };
 
 class Game {
 public:
-    void enemyAttack(Player& player) {
+    /*void enemyAttack(Player& player) {
         if (player.getHealth() > 0 && player.getAmmo() > 0) {
             player.takeDamage(10);
             player.useAmmo();
@@ -159,6 +170,10 @@ public:
         else {
             std::cout << "Player can't respond to attack." << std::endl;
         }
+    }*/
+
+    void enemyAttack(Player& player) {
+        player.processAttack();
     }
 };
 
@@ -170,7 +185,7 @@ int main() {
  
     BankAccount account(1000.0);
     account.manageBankAccount();
-    // Violation of Tell, Don't Ask
+   
     
     //////////////////////////////////////////////////////////////////
     // Exercise 2
