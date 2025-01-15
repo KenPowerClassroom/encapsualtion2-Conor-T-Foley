@@ -71,19 +71,35 @@ public:
     void returnBook() {
         isAvailable = true;
     }
+
+    void queryBookBorrow() {
+        if (checkAvailability()) {
+            borrowBook();
+            std::cout << "Book borrowed successfully." << std::endl;
+        }
+        else {
+            std::cout << "Book is not available for borrowing!" << std::endl;
+        }
+    }
 };
 
 class Library {
 public:
+
+
+    //void processBookBorrowing(Book& book) {
+    //    // Violates Tell, Don't Ask
+    //    if (book.checkAvailability()) {
+    //        book.borrowBook();
+    //        std::cout << "Book borrowed successfully." << std::endl;
+    //    }
+    //    else {
+    //        std::cout << "Book is not available for borrowing." << std::endl;
+    //    }
+    //}
+
     void processBookBorrowing(Book& book) {
-        // Violates Tell, Don't Ask
-        if (book.checkAvailability()) {
-            book.borrowBook();
-            std::cout << "Book borrowed successfully." << std::endl;
-        }
-        else {
-            std::cout << "Book is not available for borrowing." << std::endl;
-        }
+        book.queryBookBorrow();
     }
 };
 
